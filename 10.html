@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5 翻转</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--<link href="css/style.css" type="text/css" rel="stylesheet">-->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .divBox{
+            width: 800px;
+            height: 400px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .divBox-outer{
+            width: 100%;
+            height: 100%;
+        }
+        .divBox-item{
+            width: 80px;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: 2s;
+            position: absolute;
+        }
+        .img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .img:nth-child(1){
+             background-image: url("images/1-1.png");
+             transform: rotateX(0) translateZ(200px);
+         }
+        .img:nth-child(2){
+            background-image: url("images/1-2.png");
+            transform: rotateX(90deg) translateZ(200px);
+        }
+        .img:nth-child(3){
+            background-image: url("images/1-3.png");
+            transform:rotateX(180deg) translateZ(200px);
+        }
+        .img:nth-child(4){
+            background-image: url("images/1-4.png");
+            transform: rotateX(270deg) translateZ(200px);
+        }
+        .btns{
+            position: absolute;
+            height: 50px;
+            width: 100%;
+            top: calc(50% - 25px);
+            color: #ffffff;
+            font-size: 2em;
+            line-height: 50px;
+            text-align: center;
+        }
+        .prev,.next{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,.3);
+            cursor: pointer;
+        }
+        .prev{
+            left: 0;
+        }
+        .next{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="divBox">
+        <div class="divBox-outer">
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <div class="divBox-item">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+        </div>
+        <div class="btns">
+            <div class="prev" id="prev">&lt;</div>
+            <div class="next" id="next">&gt;</div>
+        </div>
+    </div>
+</body>
+<script src="mui/js/jquery.min.js" type="text/javascript"></script>
+<script>
+    var items = document.querySelectorAll(".divBox-item");
+    for(var i=0; i<items.length; i++){
+        item = items[i];
+        item.style['left'] = item.offsetWidth*i +'px';
+        item.style["transitionDelay"] = .3 *i +"s";
+        var sub = item.children;
+        for (var j=0; j<sub.length; j++){
+            var img = sub[j];
+            img.style["backgroundPosition"] = -item.offsetWidth *i +'px';
+        }
+    }
+    var num = 0;
+    document.querySelector("#next").addEventListener("click",function () {
+       var rotate = ++num*90;
+       for(var i=0; i<items.length; i++){
+           items[i].style["transform"] = "rotateX("+rotate+"deg)";
+       }
+    });
+    document.querySelector("#prev").addEventListener("click",function () {
+        var rotate = --num*90;
+        for(var i=0; i<items.length; i++){
+            items[i].style["transform"] = "rotateX("+rotate+"deg)";
+        }
+    })
+</script>
+</html>

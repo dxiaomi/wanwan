@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin:  -50px 0 0 -50px;
+            border: 2px solid #999;
+            transition: .3s ease;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        #box:hover{
+            animation: widthName 1s linear 2;
+        }
+        @keyframes widthName {
+            from{
+
+            }
+            to{
+                width: 200px;
+                height: 200px;
+                -webkit-transform: rotate(405deg);
+                -moz-transform: rotate(405deg);
+                -ms-transform: rotate(405deg);
+                -o-transform: rotate(405deg);
+                transform: rotate(405deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script src="mui/js/jquery.min.js" type="text/javascript"></script>
+<script src="js/public.js" type="text/javascript"></script>
+<script>
+    function Dog(name, color) {
+        this.name = name;
+        this.color = color
+    }
+    function Cat(age) {
+        this.age = age;
+    }
+    var a = new Dog("大毛","灰色");
+    var b = new Cat("20");
+    //父类：人
+    function Person () {
+        this.head = '脑袋瓜子';
+        this.emotion = ['喜', '怒', '哀', '乐']; //人都有喜怒哀乐
+    }
+    //将 Person 类中需共享的方法放到 prototype 中，实现复用
+    Person.prototype.eat = function () {
+        console.log('吃吃喝喝');
+    }
+    Person.prototype.sleep = function () {
+        console.log('睡觉');
+    }
+    Person.prototype.run = function () {
+        console.log('快跑');
+    }
+    //子类：学生，继承了“人”这个类
+    function Student(studentID) {
+        this.studentID = studentID;
+        Person.call(this);
+    }
+
+    Student.prototype = new Person();  //此时 Student.prototype 中的 constructor 被重写了，会导致 stu1.constructor === Person
+    Student.prototype.constructor = Student;  //将 Student 原型对象的 constructor 指针重新指向 Student 本身
+
+    var stu1 = new Student(1001);
+    console.log(stu1.emotion); //['喜', '怒', '哀', '乐']
+
+    stu1.emotion.push('愁');
+    console.log(stu1.emotion); //["喜", "怒", "哀", "乐", "愁"]
+
+    var stu2 = new Student(1002);
+    console.log(stu2.emotion); //["喜", "怒", "哀", "乐"]
+
+    stu1.eat(); //吃吃喝喝
+    stu2.run(); //快跑
+    console.log(stu1.constructor);  //Student
+
+</script>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue </title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <script src="js/vue.js" type="text/javascript"></script>
+    <style>
+        [v-cloak]{    /*网络加载慢 隐藏{{}}*/
+            display: none;
+        }
+        .divBox{
+            width: 400px;
+            padding: 15px;
+            background: #1E9FFF;
+            margin: 100px auto;
+        }
+        .divBox ul li{
+            padding: 15px;
+            color: #ffffff;
+            width: 370px;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 20px;
+            margin-bottom:8px;
+            background: #ff5053;
+        }
+        .divBox ul li span{
+            float: right;
+        }
+        .divBox ul li.avtive{
+            background: #93D1FF;
+        }
+        .divBox p {
+            display: inline-block;
+            width: 100%;
+        }
+        .divBox p span{
+            text-align: right;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{str}}
+        <div class="divBox" v-cloak>
+            <ul>
+                <li v-for="(item, key, index ) in items" @click="toggle(item)" :class="{'avtive':item.action}" :key="index">{{item.name}}<span>{{item.age}}</span>{{ key }}</li>
+            </ul>
+            <p>
+                总价格：<span>{{total()}}</span>
+            </p>
+        </div>
+
+
+        <input v-model.lazy="mag">
+    </div>
+</body>
+<!--<script src="mui/js/jquery.min.js" type="text/javascript"></script>-->
+<script>
+    var vue = new Vue({
+        el : "#app",
+        data:{
+            str : "hello",
+            mag:"12312",
+            items:[{
+                name:"zhanshan",
+                age:234,
+                action:true
+            },{
+                name:"wangwu",
+                age:665,
+                action:false
+            },{
+                name:"lisi",
+                age:322,
+                action:false
+            }]
+        },
+        methods:{
+            toggle:function (i) {
+                i.action = !i.action;
+            },
+            total:function () {
+                var total = 0;
+                this.items.forEach(function (s) {
+                    if(s.action){
+                        total+=s.age
+                    }
+                })
+                return total;
+            }
+        }
+    })
+
+</script>
+</html>

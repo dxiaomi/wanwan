@@ -1,0 +1,161 @@
+﻿body{margin: 0; padding: 0;font-family:"Microsoft YaHei"; font-size:12px; background-color: #ffffff}
+dl,dt,dd{display:block;margin:0}
+img{border:0}
+ul,LI{margin:0;padding:0;border-width:0;list-style-type:none}
+em, i{font-style:normal;}
+a {outline: medium none;text-decoration: none;  }
+a:hover {text-decoration: none;/* border:none;*/}
+textarea{resize:none}
+*:focus {outline: none;}
+article,section,header,footer,aside,nav,iframe{display:block}
+
+
+/*上传*/
+.uploadFrom{
+    width: 100%;
+    display: inline-block;
+}
+.ulLoad > li{
+    width: 100%;
+    display: inline-block;
+    padding: 15px 4%;
+    border-bottom: 1px solid #dcdcdc;
+}
+.titleBox span:first-child{
+    width: 75%;
+    display: inline-block;
+}
+.ulLoad li > div.titleBox > i{
+    float: right;
+    display: inline-block;
+    color: #888888;
+    transition: all .3s;
+}
+.titleBox i.rotate{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    transition: all .3s;
+}
+.imgBox{
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid #4cb223;
+    padding: 5px;
+    float: left;
+    border-radius: 4px;
+    display: none;
+}
+.ulUpImg{
+    width: 100%;
+    display: inline-block;
+    float: left;
+}
+.ulUpImg > li{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    float: left;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    margin: 5px 5px;
+    overflow: hidden;
+    position: relative;
+    background: #fff no-repeat center;
+    background-size: cover;
+    position: relative;
+}
+.ulUpImg li img{
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+}
+.ulUpImg li a{
+    width: 100%;
+    display: inline-block;
+    padding: 32px 0;
+    text-align: center;
+}
+.ulUpImg li a > i{
+    font-size: 40px;
+    display: inline-block;
+    color: #888888;
+    padding-top: 4px;
+}
+
+.ulUpImg li div.info{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    height: 24px;
+    width: 100%;
+    padding: 0 8px;
+    color: #ffffff;
+}
+/*图片上传*/
+/*#identityCard,#homeBook,#marriageMakings,#invoice,#other{display: none;}*/
+#fileCard,#fileBook,#fileMakings,#fileMortgage,#fileOther{display: none;}
+canvas{width: 100%;border: 1px solid #000000;}
+.progress{position: absolute;width: 100%;height: 20px;line-height: 20px;bottom: 0;left: 0;background-color:rgba(100,149,198,.5);}
+.progress span{display: block;width: 0;height: 100%;background-color:rgb(100,149,198);text-align: center;color: #FFF;font-size: 13px;}
+.size{position: absolute;width: 100%;height: 15px;line-height: 15px;bottom: 2px;text-align: center;font-size: 13px;color: #fff;}
+.tips{display: block;text-align:center;font-size: 13px;margin: 10px;color: #999;}
+p.progress{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    line-height: 20px;
+    background-color:rgba(100,149,198,.5);
+}
+.btnForder{
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.btnForder a,.btnForder button{
+    width: 30%;
+    display: inline-block;
+    color: #fff;
+    background: #f9a937;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    float: left;
+    margin-left:13%;
+    margin-top:20px;
+}
+.btnForder button{
+    background: #4cb223;
+}
+
+
+/*手机适配*/
+@media only screen and (min-width:320px) and (min-height:480px){
+
+}
+@media only screen and (min-width:320px) and (min-height:568px){
+    p.reminder{
+        margin-top: 70px;
+    }
+}
+@media only screen and (min-width:360px) and (min-height:640px){
+    p.reminder{
+        margin-top: 46%;
+    }
+
+}
+@media only screen and (min-width:375px) and (min-height:667px){
+    .searchList .mui-radio.mui-left label{
+        padding-left: 15px !important;
+    }
+}
+@media only screen and (min-width:414px) and (min-height:736px){
+    .searchList .mui-radio.mui-left label{
+        padding-left: 8px !important;
+    }
+}
+
